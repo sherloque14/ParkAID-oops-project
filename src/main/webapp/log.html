@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+        <link rel="shortcut icon" href="assets/images/favicon-32x32.png" type="image/png">
+    <title>User Login portal</title>
+    <link href="assets/log.css" type="text/css" rel="stylesheet">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="1014756076271-c49ndm3782k6hvidtr6r9uan2c2lrjl3.apps.googleusercontent.com">
+</head>
+
+<body>
+    <div class="cont">
+        <div class="form sign-in">
+            <h1>Welcome to Car Parking Solutions!</h1>
+            <form action="login.jsp" method="post">
+                <div class="info">
+                    <label>
+              <span>Phone Number</span>
+              <input type="text" name="pno" required id="email" pattern="[0-9]+"  minlength="10" maxlength="10">
+            </label>
+                    <label>
+              <span>Password</span>
+              <input type="password" name="password" required>
+            </label>
+                </div>
+                <button type="submit" class="submit" href="login.jsp">Sign In</button>
+                   <!--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
+
+
+            </form>
+            <a href="reg.html" style="text-decoration:none">
+                <button class="submit">Sign Up</button>
+            </a>
+
+
+            <script type="text/javascript">
+                function onSignIn(googleUser) {
+                    var profile = googleUser.getBasicProfile();
+                    document.getElementById("email").value = profile.getEmail();
+                    //location.replace("http://localhost:8080/carpark/user.jsp")
+                }
+            </script>
+        </div>
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+                    <!-- <h2>New here?</h2>
+                    <p>Sign up and discover great amount of new opportunities!</p> -->
+                </div>
+                <div class="img__text m--in">
+                    <!-- <h2>One of us?</h2>
+                    <p>If you already has an account, just sign in. We've missed you!</p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="hex.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <title>Registration</title>
+
+    <link href="assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+    <link href="assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="assets/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <link href="assets/css/main.css" rel="stylesheet" media="all">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="1014756076271-c49ndm3782k6hvidtr6r9uan2c2lrjl3.apps.googleusercontent.com">
+</head>
+
+<body>
+    <div class="main-block page-wrapper bg-red p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2 class="title">Registration Info</h2>
+                    <form action="./otpreg.jsp" method="POST">
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input class="input--style-2 fname" type="text" name="fname" id="fname" placeholder="First name" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input class="input--style-2 fname" id="lname" type="text" name="lname" placeholder="Last name" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <input class="input--style-2 fname" type="text" name="uname" placeholder="Username" required>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input class="input--style-2" type="email" placeholder="E-mail" name="email" id="email">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input class="input--style-2" type="text" name="number" placeholder="Phone number" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input class="input--style-2" type="text" placeholder="Car Registration Number" name="register">
+                                </div>
+                                <div class="input-group">
+                                    <input class="input--style-2" type="password" name="password" placeholder="Password" required id ="pass"	>
+                                </div>
+                                <div class="input-group">
+                                    <input class="input--style-2" type="password" name="cpassword" placeholder="Confirm Password" required id = "cpass"	>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input class="input--style-2"  type="text" name="address" placeholder="Residential Address" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkbox">
+                            I accept the terms and conditions:<input type="radio" name="radiocheck" required>
+                        </div>
+                        <button class="btn btn--radius btn--green" type="submit" onclick="return Validate()">Register</button>
+                       <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>               
+                        </div>
+                    </form>
+                    <div class="btn-group">
+                        <a class="btn-item" href="log.html">Existing User? Login HERE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	 <script type="text/javascript">
+        function onSignIn(googleUser) {
+        	  var profile = googleUser.getBasicProfile();
+        	  document.getElementById("email").value = profile.getEmail();
+        	  var s=profile.getName();
+        	  var name = s.split(" ");
+        	  document.getElementById("fname").value = name[0];
+        	  var auth2 = gapi.auth2.getAuthInstance();
+        	    auth2.signOut().then(function () {
+        	        console.log('User signed out.');
+        	      });
+              //location.replace("http://localhost:8080/carpark/log.html")
+        	}
+        </script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/datepicker/moment.min.js"></script>
+    <script src="vendor/datepicker/daterangepicker.js"></script>
+    <script src="js/global.js"></script>
+    <script type="text/javascript">
+        function Validate() {
+            var password = document.getElementById("pass").value;
+            var confirmPassword = document.getElementById("cpass").value;
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+</body>
+</html>
